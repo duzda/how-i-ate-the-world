@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/food.wav-f890fb28dfd7a1b003c1ef75f2d2655a.sample"
+
+[deps]
+
+source_file="res://sfx/food.wav"
+dest_files=[ "res://.import/food.wav-f890fb28dfd7a1b003c1ef75f2d2655a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
