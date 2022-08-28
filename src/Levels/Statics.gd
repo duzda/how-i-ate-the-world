@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 const creatures1 = preload("res://src/Creatures/First.tscn")
 const creatures2 = preload("res://src/Creatures/Second.tscn")
@@ -10,6 +10,8 @@ func _ready():
 	Global.level += 1
 	
 	if Global.level == 3:
+		$CanvasLayer/ResetButton.disabled = true
+		$CanvasLayer/ResetButton.hide()
 		$Player/End/AnimationPlayer.play("end")
 		$Player/Controls.visible = false
 		return
@@ -54,10 +56,15 @@ func _on_Hungry_body_entered(_body):
 
 
 func _on_LevelEnd_body_entered(_body):
-	Global.player.blocked_controls = true
 	if Global.player.food == 3:
+		Global.player.blocked_controls = true
 		Global.scene_manager.reload_scene()
 
 
 func next_level():
 	Global.scene_manager.transition_scene(Global.scene_manager.level_02)
+
+
+func _on_ResetButton_pressed():
+	$CanvasLayer/ResetButton.disabled = true
+	Global.reset_level()

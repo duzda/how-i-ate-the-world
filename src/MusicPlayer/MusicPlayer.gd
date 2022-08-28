@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var music = [preload("res://music/Mountain View.wav"), 
 	preload("res://music/Birds.wav"), preload("res://music/West Forest.wav")]

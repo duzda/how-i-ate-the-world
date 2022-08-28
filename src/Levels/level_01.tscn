@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Tilemaps/tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://art/bg_tilemap_packed.png" type="Texture" id=3]
 [ext_resource path="res://art/characters_packed.png" type="Texture" id=4]
+[ext_resource path="res://art/arrow_clockwise.png" type="Texture" id=5]
 [ext_resource path="res://src/Trampoline/Trampoline.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/Ladder/Ladder.gd" type="Script" id=10]
 [ext_resource path="res://src/Levels/Statics.gd" type="Script" id=11]
@@ -392,7 +393,10 @@ extents = Vector2( 7, 51.5 )
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 7, 60.75 )
 
-[node name="Level_01" type="Node2D"]
+[sub_resource type="CanvasItemMaterial" id=26]
+blend_mode = 2
+
+[node name="Level_01" type="Node"]
 script = ExtResource( 11 )
 
 [node name="Environment" type="Node2D" parent="."]
@@ -542,7 +546,7 @@ position = Vector2( 339, -9 )
 position = Vector2( 247, -45 )
 
 [node name="Trampoline6" parent="Trampolines" instance=ExtResource( 9 )]
-position = Vector2( 103, 99 )
+position = Vector2( 120, 99 )
 
 [node name="Trampoline5" parent="Trampolines" instance=ExtResource( 9 )]
 position = Vector2( 157, -99 )
@@ -647,6 +651,20 @@ shape = SubResource( 10 )
 position = Vector2( 819, -42.75 )
 shape = SubResource( 11 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ResetButton" type="TextureButton" parent="CanvasLayer"]
+material = SubResource( 26 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.0
+margin_right = 96.0
+margin_bottom = 128.0
+rect_scale = Vector2( 0.25, 0.25 )
+action_mode = 0
+texture_normal = ExtResource( 5 )
+
 [connection signal="body_entered" from="Statics/Hungry" to="." method="_on_Hungry_body_entered"]
 [connection signal="body_entered" from="Statics/LevelEnd" to="." method="_on_LevelEnd_body_entered"]
 [connection signal="body_entered" from="Ladders/Area2D" to="Ladders" method="_on_Area2D_body_entered"]
@@ -661,3 +679,4 @@ shape = SubResource( 11 )
 [connection signal="body_exited" from="Ladders/Area2D5" to="Ladders" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Ladders/Area2D6" to="Ladders" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Ladders/Area2D6" to="Ladders" method="_on_Area2D_body_exited"]
+[connection signal="pressed" from="CanvasLayer/ResetButton" to="." method="_on_ResetButton_pressed"]

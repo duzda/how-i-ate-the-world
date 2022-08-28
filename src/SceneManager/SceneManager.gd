@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 var current_scene
 var new_scene
@@ -35,3 +35,8 @@ func _on_SceneManager_transitioned():
 	current_scene = new_scene
 	$CurrentScene.get_child(0).queue_free()
 	$CurrentScene.add_child(new_scene.instance())
+
+
+func _on_Button_pressed():
+	print('xoxo')
+	pass # Replace with function body.

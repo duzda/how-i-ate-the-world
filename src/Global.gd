@@ -19,3 +19,8 @@ func reset_game():
 	Global.elapsed_time = 0
 	scene_manager.transition_scene(scene_manager.level_01)
 	music_player.play_next()
+
+
+func reset_level():
+	Global.level -= 1
+	scene_manager.reload_scene()
